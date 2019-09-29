@@ -5,8 +5,13 @@ RUN apt-get update && apt-get install -y \
     libxtst6 \
     libxrender1 \
     tar
-COPY ./p2pp-2.13.4 /usr/src/myapp/p2pp
+RUN useradd -m docker 
+RUN echo "docker:test" | chpasswd 
+RUN usermod -s /bin/bash docker 
+RUN usermod -aG sudo docker 
+ENV HOME /home/docker
+
+COPY ./p2pp /usr/src/myapp/p2pp
 WORKDIR /usr/src/myapp
-ENV DISPLAY=host.docker.internal:0
-CMD ["/usr/src/myapp/bin/pp2p"]
+CMD /usr/src/myapp/p2pp/bin/pp2p
 
