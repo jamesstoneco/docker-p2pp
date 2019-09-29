@@ -1,29 +1,5 @@
 # Dockerize ESO p2pp tool for easier and lighter weight installation
 
-**IMPORTANT NOTE This is a WIP and it is not completely working yet. Currently I am getting the error below that the connection to the host x11 fails. A collogue suggested trying to use [docker-ssh-tunnel](https://github.com/cagataygurturk/docker-ssh-tunnel)**
-
-```
-Exception in thread "main" java.awt.AWTError: Can't connect to X11 window server using ':0' as the value of the DISPLAY variable.
-	at sun.awt.X11GraphicsEnvironment.initDisplay(Native Method)
-	at sun.awt.X11GraphicsEnvironment.access$200(X11GraphicsEnvironment.java:65)
-	at sun.awt.X11GraphicsEnvironment$1.run(X11GraphicsEnvironment.java:115)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at sun.awt.X11GraphicsEnvironment.<clinit>(X11GraphicsEnvironment.java:74)
-	at java.lang.Class.forName0(Native Method)
-	at java.lang.Class.forName(Class.java:264)
-	at java.awt.GraphicsEnvironment.createGE(GraphicsEnvironment.java:103)
-	at java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment(GraphicsEnvironment.java:82)
-	at sun.awt.X11.XToolkit.<clinit>(XToolkit.java:132)
-	at java.lang.Class.forName0(Native Method)
-	at java.lang.Class.forName(Class.java:264)
-	at java.awt.Toolkit$2.run(Toolkit.java:860)
-	at java.awt.Toolkit$2.run(Toolkit.java:855)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.awt.Toolkit.getDefaultToolkit(Toolkit.java:854)
-	at org.eso.ohs.phase2.apps.p2pp.P2PP.<init>(P2PP.java:137)
-	at org.eso.ohs.phase2.apps.p2pp.P2PP.main(P2PP.java:652)
-```
-
 ESO describes p2pp as "Phase 2 Proposal Preparation (P2PP) tool has been in use at ESO (European Space Observatory) telescopes since 1997." "The Phase 2 Proposal Preparation (P2PP) Tool is used to create and manage Observation Blocks (OBs). These OBs are used to describe observing sequences for all ESO instruments, both in Visitor Mode and in Service Mode."
 
 This is likely of interest to you if you are an Astronomy researcher or student wanting to easily use the p2pp tool quickly and easily and without changing a lot of things on your computer.
@@ -42,6 +18,16 @@ git clone the current project.
 ./rundocker
 ```
 
+# Prerequisites
+
+You will need to install x11 for your operating system. On a Mac you will need to install xQuartz.
+
 # About Docker
 
-TODO
+Docker is a light weight virtualization tool common in web development. Rather than emulating an entire computer, os a tool like Virtual Box might do, complete with a heavy CPU, HDD and Memory footprint it just virtualizes the kernel. In simpler words, rather than running an entire fake computer, Docker emulates just enough fake stuff as needed to run. The end result is a fast downloading, easily reproducible (works on any machine), light weight (low memory, cpu, hard drive, and super easy to install variation.
+
+# Common issues
+
+Error: "Exception in thread "main" java.awt.AWTError: Can't connect to X11 window server using '192.168.1.100:0' as the value of the DISPLAY variable."
+
+Did you close x11? Run `./local-setup.sh` again to make sure it is running.
