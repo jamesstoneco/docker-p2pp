@@ -20,7 +20,7 @@ git clone the current project.
 
 # Prerequisites
 
-You will need to install x11 for your operating system. On a Mac you will need to install xQuartz.
+You will need to install x11 for your operating system. On a Mac you will need to install xQuartz. This project has only been tested on Macosx using xQuartz but the same principals should apply to other OSs.
 
 # About Docker
 
