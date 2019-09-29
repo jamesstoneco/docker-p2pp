@@ -13,5 +13,5 @@ ENV HOME /home/docker
 
 COPY ./p2pp /usr/src/myapp/p2pp
 WORKDIR /usr/src/myapp
-CMD /usr/src/myapp/p2pp/bin/pp2p
+CMD ["/usr/src/myapp/p2pp/bin/p2pp"]
 
