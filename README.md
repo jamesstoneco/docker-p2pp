@@ -31,3 +31,7 @@ Docker is a light weight virtualization tool common in web development. Rather t
 Error: "Exception in thread "main" java.awt.AWTError: Can't connect to X11 window server using '192.168.1.100:0' as the value of the DISPLAY variable."
 
 Did you close x11? Run `./local-setup.sh` again to make sure it is running.
+
+# Future work
+
+Create a more secure option that doesn't the `xhost + $IP` complete white list. However, this is limited to your specific IP address, which is much better than a blanket `xhost +` wild card which is often cited as a common approach. More info on this [SO post](https://stackoverflow.com/questions/44429394/x11-forwarding-of-a-gui-app-running-in-docker)
